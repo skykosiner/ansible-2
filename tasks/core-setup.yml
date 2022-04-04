@@ -1,0 +1,109 @@
+- name: Install System Packages 1 (build-essential, cmake, pkg-config, pthread)
+  become: true
+  community.general.pacman:
+    name:
+      - cmake
+      - pkg-config
+  tags:
+    - install
+    - neovim
+    - core
+
+- name: Install System Packages 2 (lua, unzip, libtool, gettext)
+  become: true
+  community.general.pacman:
+    name:
+    - lua
+    - unzip
+    - libtool
+    - gettext
+  tags:
+    - install
+    - neovim
+    - core
+
+- name: Install System Packages 3 (the rest)
+  become: true
+  community.general.pacman:
+    name:
+    - picom
+    - curl
+    - htop
+    - go
+    - lsof
+    - i3-gaps
+    - ccache
+    - ninja
+    - python3
+    - dconf-editor
+    - pavucontrol
+    - piper
+    - clang
+    - mate-desktop
+    - kitty
+    - acpi
+    - steam
+  tags:
+    - install
+    - core
+
+- name: dconf i3
+  shell: dconf write /org/mate/desktop/session/required-components/windowmanager "'i3'"
+  tags:
+    - install
+    - core
+
+- name: dconf i3 (don't show desktop icons)
+  shell: dconf write /org/mate/desktop/background/show-desktop-icons "false"
+  tags:
+    - install
+    - core
+
+- name: install brave
+  shell: yay -S brave-bin --noconfirm --noprogressbar
+  tags:
+    - install
+    - core
+
+- name: install polybar
+  shell: yay -S polybar --noconfirm --noprogressbar
+  tags:
+    - install
+    - core
+
+- name: install firefox
+  community.general.pacman:
+    name: firefox
+  tags:
+    - install
+    - core
+
+
+- name: setup desktop envoriment (kde plasma, I only have this as it is the easiet way to get a few apps which I want, and also got a login manger. I don't normaly touch kde)
+  become: true
+  community.general.pacman:
+    name:
+      - xorg
+      - plasma-meta
+      - kde-applications
+  tags:
+    - install
+    - core
+
+- name: setup desktop envoriment (kde plasma) - turn on services
+  shell: sudo systemctl enable sddm && sudo systemctl enable NetworkManager
+  tags:
+    - install
+    - core
+
+- name: Install font stuff (yay)
+  shell: yay -S nerd-fonts-ubunt-mono --noconfirm --noprogressbar
+  shell: yay -S steam-fonts --noconfirm --noprogressbar
+  shell: yay -S noto-fonts-emoji --noconfirm --noprogressbar
+
+- name: Install font stuff (pacman)
+  community.general.pacman:
+    name:
+      - adobe-source-han-serif-otc-fonts
+      - adobe-source-han-sans-otc-fonts
+      - ttf-droid

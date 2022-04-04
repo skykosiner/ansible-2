@@ -1,0 +1,15 @@
+- name: Install packages
+  become: true
+  community.general.pacman:
+    name:
+      -tmux
+      - fzf
+      - gimp
+      - xclip
+      - screenkey
+      - tldr
+      - ripgrep
+      - flameshot
+  tags:
+    - install
+    - productivity

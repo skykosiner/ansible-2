@@ -1,0 +1,11 @@
+- hosts: localhost
+  tasks:
+    - include: tasks/core-setup.yml
+    - include: tasks/node.yml
+    - include: tasks/npm-packages.yml
+    - include: tasks/projects.yml
+    - include: tasks/nvim-setup.yml
+    - include: tasks/tools.yml
+    - include: tasks/lsps.yml
+    - include: tasks/zsh-setup.yml
+    - include: tasks/dotfiles.yml

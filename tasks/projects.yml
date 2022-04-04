@@ -1,0 +1,56 @@
+- name: todo me daddy exists
+  stat:
+    path: "/home/yoni/todo-me-daddy"
+  register: tdm
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+- name: Personal Project todo-me-daddy
+  ansible.builtin.git:
+    repo: 'https://github.com/yonikosiner/todo-me-daddy'
+    bare: true
+    dest: "/home/yoni/todo-me-daddy"
+  tags:
+    - install
+    - personal-project
+    - neovim
+    - dotfiles
+- name: todo-me-daddy checkout master
+  shell: cd ~/personal/todo-me-daddy && git worktree add master master
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+  when: tdm.stat.exists == False
+
+- name: Twitch bot exists
+  stat:
+    path: "/home/yoni/twitch-bot"
+  register: twitchbot
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+- name: Personal Project twitch bot
+  ansible.builtin.git:
+    repo: 'https://github.com/yonikosiner/Twitch-bot'
+    bare: true
+    dest: "/home/yoni/twitch-bot"
+  tags:
+    - install
+    - personal-project
+    - neovim
+    - dotfiles
+  when: twitchbot.stat.exists == False
+- name: twitch bot checkout ui
+  shell: cd ~/personal/twitch-bot && git worktree add ui ui
+  tags:
+    - install
+    - dotfiles
+    - neovim
+    - personal-project
+  when: twItchbot.stat.exists == False
