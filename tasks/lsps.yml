@@ -1,14 +1,17 @@
 - name: gopls
-  shell: go get golang.org/x/tools/gopls@latest\
+  community.general.pacman:
+    name:
+      - gopls
   tags:
     - install
     - core
     - neovim
+    - lsp
 
 - name: lua language server (clone)
   ansible.builtin.git:
     repo: "https://github.com/sumneko/lua-language-server"
-    dest: "{{ lookup('env', 'HOME') }}/personal/"
+    dest: "{{ lookup('env', 'HOME') }}/personal/lua-language-server"
     recursive: yes
     update: yes
     accept_hostkey: yes
@@ -17,12 +20,15 @@
     - install
     - core
     - neovim
-- name: lua language server (setup)
-  shell: cd /home/yoni/personal/lua-language-server/3rd/luamake/compile/install.sh && cd /home/yoni/personal/lua-language-server/3rd/luamake/luamake rebuild
-  tags:
-    - install
-    - core
-    - neovim
+    - lsp
+# - name: lua language server (setup)
+#   shell: cd /home/yoni/personal/lua-language-server && git submodule update --init --recursive
+#   shell: /home/yoni/personal/lua-language-server/3rd/luamake/compile/install.sh && /home/yoni/personal/lua-language-server/3rd/luamake/compile/rebuild
+#   tags:
+#     - install
+#     - core
+#     - neovim
+#     - lsp
 
 - name: pyright
   shell: sudo pip3 install pyright
@@ -30,6 +36,7 @@
     - install
     - core
     - neovim
+    - lsp
 
 - name: rust analyzer
   community.general.pacman:
@@ -39,3 +46,4 @@
     - install
     - core
     - neovim
+    - lsp

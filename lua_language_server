@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd /home/yoni/lua-language-server/
+cd 3rd/luamake
+./compile/install.sh
+cd ../..
+./3rd/luamake/luamake rebuild

@@ -1,6 +1,6 @@
 - name: todo me daddy exists
   stat:
-    path: "/home/yoni/todo-me-daddy"
+    path: "/home/yoni/personal/todo-me-daddy"
   register: tdm
   tags:
     - install
@@ -11,7 +11,7 @@
   ansible.builtin.git:
     repo: 'https://github.com/yonikosiner/todo-me-daddy'
     bare: true
-    dest: "/home/yoni/todo-me-daddy"
+    dest: "/home/yoni/personal/todo-me-daddy"
   tags:
     - install
     - personal-project
@@ -28,7 +28,7 @@
 
 - name: Twitch bot exists
   stat:
-    path: "/home/yoni/twitch-bot"
+    path: "/home/yoni/personal/twitch-bot"
   register: twitchbot
   tags:
     - install
@@ -37,9 +37,9 @@
     - personal-project
 - name: Personal Project twitch bot
   ansible.builtin.git:
-    repo: 'https://github.com/yonikosiner/Twitch-bot'
+    repo: 'https://github.com/yonikosiner/Twitch_bot'
     bare: true
-    dest: "/home/yoni/twitch-bot"
+    dest: "/home/yoni/personal/twitch-bot"
   tags:
     - install
     - personal-project
@@ -54,3 +54,49 @@
     - neovim
     - personal-project
   when: twItchbot.stat.exists == False
+
+- name: yonikosiner-com exists
+  stat:
+    path: "/home/yoni/personal/yonikosiner-com/"
+  register: yonikosiner-com
+  tags:
+    - install
+    - personal-project
+- name: Personal Project yonikosiner-com
+  ansible.builtin.git:
+    repo: 'https://github.com/yonikosiner/yonikosiner-com'
+    bare: true
+    dest: "/home/yoni/personal/yonikosiner-com"
+  tags:
+    - install
+    - personal-project
+  when: yonikosiner-com.stat.exists == False
+- name:  yonikosiner checkout master
+  shell: cd ~/personal/yonikosiner-com && git worktree add master master
+  tags:
+    - install
+    - personal-project
+  when: yonikosiner-com.stat.exists == False
+
+- name: go wiki exists
+  stat:
+    path: "/home/yoni/personal/gowiki/"
+  register: gowiki
+  tags:
+    - install
+    - personal-project
+- name: Personal Project gowiki
+  ansible.builtin.git:
+    repo: 'https://github.com/yonikosiner/gowiki'
+    bare: true
+    dest: "/home/yoni/personal/gowiki"
+  tags:
+    - install
+    - personal-project
+  when: gowiki.stat.exists == False
+- name:  gowiki checkout master
+  shell: cd ~/personal/gowiki && git worktree add master master
+  tags:
+    - install
+    - personal-project
+  when: gowiki.stat.exists == False

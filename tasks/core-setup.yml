@@ -26,6 +26,15 @@
   become: true
   community.general.pacman:
     name:
+      # Very important to flex the arch btw
+    - neofetch
+    - lolcat
+    - zathura
+    - zathura-pdf-mupdf
+    - mpv
+    - vlc
+    - sxiv
+    - nnn
     - picom
     - curl
     - htop
@@ -35,6 +44,9 @@
     - ccache
     - ninja
     - python3
+    - bat
+    - git
+    - acpi
     - dconf-editor
     - pavucontrol
     - piper
