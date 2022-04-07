@@ -1,0 +1,48 @@
+- name: School work
+  ansible.builtin.git:
+    repo: 'https://github.com/yonikosiner/school-work'
+    dest: "/home/yoni/school-work"
+  tags:
+    - install
+    - school
+
+- name: school-python
+  shell: mkdir ~/school-python/
+  tags:
+    - install
+    - school
+
+- name: Idk-more-school-stuff (great naming past yoni)
+  ansible.builtin.git:
+    repo: "https://github.com/yonikosiner/idik-more-school-tuff"
+    dest: "/home/yoni/school-python/idk-more-school-stuff"
+
+- name: Menu
+  ansible.builtin.git:
+    repo: "https://github.com/yonikosiner/menu"
+    dest: "/home/yoni/school-python/menu"
+
+- name: Movie list python school
+  ansible.builtin.git:
+    repo: "https://github.com/yonikosiner/Movie-list-python-school"
+    dest: "/home/yoni/school-python/Move-list-python-school"
+
+- name: Password me daddy
+  ansible.builtin.git:
+    repo: "https://github.com/yonikosiner/Password-me-daddy"
+    dest: "/home/yoni/school-python/Password-me-daddy"
+
+- name: Python circle school
+  ansible.builtin.git:
+    repo: "https://github.com/yonikosiner/python-circle-school"
+    dest: "/home/yoni/school-python/python-circle-school"
+
+- name: Python deez nuts with sea men (nice)
+  ansible.builtin.git:
+    repo: "https://github.com/yonikosiner/python-deez-nut-with-sea-men"
+    dest: "/home/yoni/school-python/python-deez-nuts-with-sea-men"
+
+- name: Triangle the lord lords shape school
+  ansible.builtin.git:
+    repo: "https://github.com/yonikosiner/triangle-the-lords-shape-school"
+    dest: "/home/yoni/school-python/tirangle-the-lords-shape-school"
