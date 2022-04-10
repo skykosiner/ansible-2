@@ -47,6 +47,9 @@
     - bat
     - git
     - acpi
+    - pulsemixer
+    - dunst
+    - pulseaudio
     - dconf-editor
     - pavucontrol
     - piper

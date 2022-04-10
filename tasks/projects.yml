@@ -87,7 +87,7 @@
     - personal-project
 - name: Personal Project gowiki
   ansible.builtin.git:
-    repo: 'https://github.com/yonikosiner/gowiki'
+    repo: 'https://github.com/yonikosiner/wiki-in-go'
     bare: true
     dest: "/home/yoni/personal/gowiki"
   tags:
@@ -100,3 +100,26 @@
     - install
     - personal-project
   when: gowiki.stat.exists == False
+
+- name: schol-work-to-reple-it exists
+  stat:
+    path: "/home/yoni/personal/school-work-to-reple/"
+  register: swt
+  tags:
+    - install
+    - personal-project
+- name: Personal Project school-work-to-reple
+  ansible.builtin.git:
+    repo: 'https://github.com/yonikosiner/school-work-to-reple-it'
+    bare: true
+    dest: "/home/yoni/personal/school-work-to-reple"
+  tags:
+    - install
+    - personal-project
+  when: swt.stat.exists == False
+- name:  schol-work-to-reple-it checkout master
+  shell: cd ~/personal/school-work-to-reple && git worktree add master master
+  tags:
+    - install
+    - personal-project
+  when: swt.stat.exists == False

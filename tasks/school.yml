@@ -1,6 +1,6 @@
 - name: School work
   ansible.builtin.git:
-    repo: 'https://github.com/yonikosiner/school-work'
+    repo: 'https://github.com/yonikosiner/School-work'
     dest: "/home/yoni/school-work"
   tags:
     - install
