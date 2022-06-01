@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd /home/yoni/lua-language-server/
+cd /home/yoni/personal/lua-language-server/
 cd 3rd/luamake
 ./compile/install.sh
 cd ../..

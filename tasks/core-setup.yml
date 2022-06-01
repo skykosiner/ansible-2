@@ -105,16 +105,11 @@
     - install
     - core
 
-- name: setup desktop envoriment (kde plasma) - turn on services
-  shell: sudo systemctl enable sddm && sudo systemctl enable NetworkManager
-  tags:
-    - install
-    - core
-
 - name: Install font stuff (yay)
   shell: yay -S nerd-fonts-ubunt-mono --noconfirm --noprogressbar
   shell: yay -S steam-fonts --noconfirm --noprogressbar
   shell: yay -S noto-fonts-emoji --noconfirm --noprogressbar
+  shell: yay -S ttf-iosevka-term --noconfirm --noprogressbar
 
 - name: Install font stuff (pacman)
   community.general.pacman:
@@ -122,3 +117,6 @@
       - adobe-source-han-serif-otc-fonts
       - adobe-source-han-sans-otc-fonts
       - ttf-droid
+
+- name: Install alacritty, the lords terrminal (writen in rust btw)
+  shell: yay -S alacritty --noconfirm --noprogressbar
